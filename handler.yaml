@@ -1,0 +1,23 @@
+---
+ - hosts: all
+   become: true
+   vars:
+     companyname: Mithuntechnos
+     location: bangalore
+   tasks:
+    - name: install apache HTTPD servers
+      yum:
+        name: httpd
+        state: present
+    - name: copy index.html
+      template:
+        src: index.html
+        dest: /var/www/html/index.html
+      notify:
+        - restart the http server
+   handlers:
+    - name: restart the http server
+      service:
+        name: httpd
+        state: restarted
+...

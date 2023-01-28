@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+    - name: creating the file
+      file:
+        path: /tmp/mg.txt
+        owner: ansible
+        group: ansible
+        mode: 0777
+        state: touch
+...

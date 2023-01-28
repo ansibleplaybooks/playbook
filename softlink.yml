@@ -1,0 +1,9 @@
+---
+ - hosts: all
+   tasks:
+    - name: creating the softlink
+      file:
+        src: /tmp/demo2.txt
+        dest: /tmp/demo2.txt
+        state: link
+... 

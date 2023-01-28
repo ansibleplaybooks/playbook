@@ -1,0 +1,15 @@
+pugin: aws_ec2
+aws_acess_key: AKIAWBJI536E62NDTFGA
+aws_secret_key: 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
+regions:
+  - ap-south-1
+filters: 
+  instances-state-name: running
+keyed_groups:
+  - key: tags.name
+    prefix:
+     seperator
+hostnames:
+  - private-ip-address
+compose:
+  ansible_host: private-ip-address

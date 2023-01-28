@@ -1,0 +1,19 @@
+---
+ - hosts: all
+   become: true
+   vars_files:
+    - "{{env}}_varsfile.yaml"
+   tasks:
+    - name: install apache HTTPD servers
+      yum:
+        name: httpd
+        state: present
+    - name: start the apache HTTPD servers
+      service:
+        name: httpd
+        state: started
+    - name: copy index.html
+      template:
+        src: index.html
+        dest: /var/www/html/index.html
+...

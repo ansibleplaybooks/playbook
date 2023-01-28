@@ -1,0 +1,16 @@
+---
+ - hosts: all
+   become: true
+   tasks:
+    - name: creating the file
+      file:
+        path: /tmp/demo.txt
+        owner: ansible
+        group: ansible
+        mode: 0777
+        state: touch
+    - name: copying the file
+      copy:
+         src: /tmp/demo.txt
+         dest: /tmp/demo.txt
+...

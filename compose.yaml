@@ -1,0 +1,27 @@
+version: '3.0'
+services:
+  springapp:
+    image: mallegowda/mavenapp
+    ports: 
+    - 8888:8080
+    environment:
+    - MONGO_DB_HOSTNAME=mongoawsebs 
+    - MONGO_DB_USERNAME=mg 
+    - MONGO_DB_PASSWORD=mg@123
+    networks:
+    - springappbridge
+  mongo:
+    image: mongo
+    volumes:
+    - mongovol
+    environment:
+    - MONGO_DB_USERNAME=mg 
+    - MONGO_DB_PASSWORD=mg@123
+    networks:
+    - springappbridge
+networks:
+  springappbridge:
+    driver: local
+volumes:
+  mongovol:
+    driver: local
